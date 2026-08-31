@@ -2,7 +2,7 @@
 set -euo pipefail
 set -x
 
-curl -L -o asndb.gz "https://ipinfo.io/data/ipinfo_lite.json.gz?_src=frontend&token=xxxxxx"
+curl -L -o asndb.gz "https://ipinfo.io/data/ipinfo_lite.json.gz?_src=frontend&token=$IPINFO_API_TOKEN"
 
 gunzip -d asndb.gz
 
