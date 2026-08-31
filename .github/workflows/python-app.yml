@@ -34,6 +34,7 @@ jobs:
       run: |
         set -euo pipefail
         set -x
-        git remote add ipranges2 https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}
+        git config --local user.email "$(git log --format='%ae' --reverse | head -1)"
+        git config --local user.name "$(git log --format='%an' --reverse | head -1)"
         git commit . -m "autocommit workflow"
         git push
