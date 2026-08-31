@@ -37,5 +37,9 @@ jobs:
         git config --local user.email "$(git log --format='%ae' --reverse | head -1)"
         git config --local user.name "$(git log --format='%an' --reverse | head -1)"
         git add .
-        git commit -m "autocommit workflow"
+        if [ -z $(git status --porcelain) ]; then
+            echo 'No changes'
+            exit 0
+        fi
+        git commit -m "autocommit github workflow $(date '+%F_%R')"
         git push
