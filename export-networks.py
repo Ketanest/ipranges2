@@ -43,7 +43,7 @@ for dstfile in dstfiles:
 		exit('Destination file exists but --force operator not chosen. Exiting.')
 
 #set further variables
-filter = args.filter
+filter = args.filter.lower()
 
 #create empty array for networks
 networks_v4 = []
@@ -56,10 +56,12 @@ with open(src) as file:
 		obj = json.loads(line)
 		#load asname into variable and lower it
 		asname = str(obj['as_name']).lower()
+		#load asdomain into variable and lower it
+		asdomain = str(obj['as_domain']).lower()
 		#load network into variable as IPNetwork (netaddr)
 		network = IPNetwork(obj['network'])
 		#check if asname (lower) contains AS filter (lower)
-		if filter.lower() in asname:
+		if filter in asname or filter in asdomain:
 			#skip on failure checking IP-Version, otherwise append network to belonging array
 			if network.version == 4:
 				networks_v4.append(network)
