@@ -36,5 +36,6 @@ jobs:
         set -x
         git config --local user.email "$(git log --format='%ae' --reverse | head -1)"
         git config --local user.name "$(git log --format='%an' --reverse | head -1)"
-        git commit . -m "autocommit workflow"
+        git add .
+        git commit -m "autocommit workflow"
         git push
