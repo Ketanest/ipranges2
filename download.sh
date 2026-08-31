@@ -15,3 +15,4 @@ function make_all_ranges(){
 make_all_ranges ./google "google"
 make_all_ranges ./netflix "netflix"
 make_all_ranges ./amazon "amazon"
+make_all_ranges ./cloudflare "cloudflare"
