@@ -34,6 +34,5 @@ jobs:
       run: |
         set -euo pipefail
         set -x
-        git pull https://${GITHUB_TOKEN}@github.com/Ketanest/ipranges2.git
-        
-      
+        git commit . -m "autocommit workflow"
+        git push
