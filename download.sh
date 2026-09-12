@@ -12,23 +12,25 @@ function make_all_ranges(){
 	./export-networks.py -s asndb-filtered -d "$1" -f "$2" --force
 }
 
-asns = [
-	("google", "google"),
-	("netflix", "netflix"),
-	("amazon", "amazon"),
-	("cloudflare", "cloudflare"),
-	("facebook", "facebook"),
-	("apple", "apple inc"),
-	("github", "github"),
-	("linode", "linode"),
-	("microsoft", "microsoft"),
-	("openai", "openai"),
-	("oracle", "oracle"),
-	("telegram", "telegram"),
-	("vultr", "vultr"),
-	("twitter", "twitter"),
-	("proton", "proton"),
-]
+asns=(
+	"google|google"
+	"netflix|netflix"
+	"amazon|amazon"
+	"cloudflare|cloudflare"
+	"facebook|facebook"
+	"apple|apple inc"
+	"github|github"
+	"linode|linode"
+	"microsoft|microsoft"
+	"openai|openai"
+	"oracle|oracle"
+	"telegram|telegram"
+	"vultr|vultr"
+	"twitter|twitter"
+	"proton|proton"
+)
 
-for dir, name in asns:
+for range in "${asns[@]}"; do
+	IFS='|' read -r dir name <<< "$range"
 	make_all_ranges "./$dir" "$name"
+done
