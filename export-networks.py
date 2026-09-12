@@ -60,7 +60,7 @@ with open(src) as file:
 		asdomain = str(obj['as_domain']).lower()
 		#load network into variable as IPNetwork (netaddr)
 		network = IPNetwork(obj['network'])
-		#check if asname (lower) contains AS filter (lower)
+		#check if asname (lower) or asdomain (lower) contains AS filter (lower)
 		if filter in asname or filter in asdomain:
 			#skip on failure checking IP-Version, otherwise append network to belonging array
 			if network.version == 4:
