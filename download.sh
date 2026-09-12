@@ -4,7 +4,7 @@ set -x
 
 curl -L -o asndb.gz "https://ipinfo.io/data/ipinfo_lite.json.gz?_src=frontend&token=$1"
 
-gunzip -d asndb.gz
+gunzip -d asndb.gz -f
 
 jq -c '{network, asn, as_name, as_domain}' asndb > asndb-filtered
 
